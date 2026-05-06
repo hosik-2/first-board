@@ -32,8 +32,8 @@
     </div>
 
     <a href="/boards" th:href="@{/board}" class="btn btn-secondary">목록</a>
-    <a href="/boards/1/edit" th:href="@{/board/edit/{boardId}(boardId=${board.id})}" class="btn btn-warning">수정</a>
-    <form th:action="@{/board/delete/{id}(id=${board.id})}" method="post">
+    <a href="/boards/1/edit" th:href="@{/board/{id}/edit(id=${board.id})}" class="btn btn-warning">수정</a>
+    <form th:action="@{/board/{id}/delete(id=${board.id})}" method="post">
         <button type="submit" class="btn btn-danger">삭제</button>
     </form>
 
