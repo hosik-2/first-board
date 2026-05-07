@@ -1,9 +1,8 @@
 package com.hoseok.firstboard.service;
 
-import com.hoseok.firstboard.Board;
-import com.hoseok.firstboard.repository.BoardRepository;
-import com.hoseok.firstboard.repository.MemoryBoardRepository;
-import org.assertj.core.api.Assertions;
+import com.hoseok.firstboard.domain.board.Board;
+import com.hoseok.firstboard.domain.board.BoardRepository;
+import com.hoseok.firstboard.domain.board.MemoryBoardRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BoardServiceImplTest {
 

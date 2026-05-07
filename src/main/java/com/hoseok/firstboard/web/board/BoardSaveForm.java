@@ -1,7 +1,6 @@
-package com.hoseok.firstboard.controller.dto;
+package com.hoseok.firstboard.web.board;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 

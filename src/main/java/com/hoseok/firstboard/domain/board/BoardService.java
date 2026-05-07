@@ -1,6 +1,4 @@
-package com.hoseok.firstboard.service;
-
-import com.hoseok.firstboard.Board;
+package com.hoseok.firstboard.domain.board;
 
 import java.util.List;
 

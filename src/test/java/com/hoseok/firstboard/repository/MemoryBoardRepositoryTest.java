@@ -1,12 +1,11 @@
 package com.hoseok.firstboard.repository;
 
-import com.hoseok.firstboard.Board;
+import com.hoseok.firstboard.domain.board.Board;
+import com.hoseok.firstboard.domain.board.MemoryBoardRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class MemoryBoardRepositoryTest {
 

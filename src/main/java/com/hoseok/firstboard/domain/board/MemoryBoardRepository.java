@@ -1,6 +1,5 @@
-package com.hoseok.firstboard.repository;
+package com.hoseok.firstboard.domain.board;
 
-import com.hoseok.firstboard.Board;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 

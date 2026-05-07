@@ -1,7 +1,5 @@
-package com.hoseok.firstboard.service;
+package com.hoseok.firstboard.domain.board;
 
-import com.hoseok.firstboard.Board;
-import com.hoseok.firstboard.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
