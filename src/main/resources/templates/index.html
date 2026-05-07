@@ -12,10 +12,10 @@
 
     <div th:if="${session.loginMember == null}" class="row justify-content-center">
         <div class="col-auto">
-            <a class="btn btn-primary btn-lg" th:href="@{/login}">로그인</a>
+            <a class="btn btn-primary btn-lg" th:href="@{/member/login}">로그인</a>
         </div>
         <div class="col-auto">
-            <a class="btn btn-secondary btn-lg" th:href="@{/members/add}">회원 가입</a>
+            <a class="btn btn-secondary btn-lg" th:href="@{/member/register}">회원 가입</a>
         </div>
     </div>
 
@@ -23,7 +23,7 @@
         <h2 th:text="|${session.loginMember.name}님 환영합니다!|">사용자 이름</h2>
         <div class="mt-4">
             <a class="btn btn-info btn-lg" th:href="@{/board}">게시판 입장</a>
-            <form th:action="@{/logout}" method="post" class="d-inline">
+            <form th:action="@{/member/logout}" method="post" class="d-inline">
                 <button class="btn btn-danger btn-lg" type="submit">로그아웃</button>
             </form>
         </div>
