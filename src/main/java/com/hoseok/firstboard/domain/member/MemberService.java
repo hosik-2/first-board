@@ -14,4 +14,6 @@ public interface MemberService {
 
     Optional<String> findPassword(String loginId, String name, String email, String phoneNumber);
 
+    void clear();
+
 }

@@ -34,4 +34,9 @@ public class MemberServiceImpl implements MemberService {
     public Optional<String> findPassword(String loginId, String name, String email, String phoneNumber) {
         return memberRepository.findByLoginIdAndNameAndEmailAndPhoneNumber(loginId, name, email, phoneNumber).map(Member::getPassword);
     }
+
+    @Override
+    public void clear() {
+        memberRepository.clearStore();
+    }
 }
