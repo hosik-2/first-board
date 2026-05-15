@@ -1,13 +1,16 @@
 package com.hoseok.firstboard;
 
 import com.hoseok.firstboard.web.filter.LogFilter;
+import com.hoseok.firstboard.web.interceptor.LoginCheckInterceptor;
 import jakarta.servlet.Filter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration //설정파일 (@Component 포함)
-public class WebConfig {
+public class WebConfig implements WebMvcConfigurer {
 
     @Bean // 빈 등록 필수!
     // 클래스 레벨에 컴포넌트가 붙으면 클래스 정보를... 스프링이 알게끔 컨테이너에 들어가 근데 안에 있는 메서드들은 실행이 안돼 필요할 때만
@@ -23,5 +26,14 @@ public class WebConfig {
         filterRegistrationBean.addUrlPatterns("/*"); // 사용할 URL 패턴 등록 *은 모두임
 
         return filterRegistrationBean;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginCheckInterceptor())
+                .order(1)
+                .addPathPatterns("/**")
+                .excludePathPatterns("/", "/member/register", "/member/login", "/member/logout", "/css/**",
+                        "/js/**", "/*.ico", "/error");
     }
 }
