@@ -100,4 +100,9 @@ public class MemberController {
 
         return "redirect:/";
     }
+
+    @GetMapping("/500-error")
+    public String error500() {
+        throw new RuntimeException("500Error");
+    }
 }
