@@ -3,6 +3,10 @@ package com.hoseok.firstboard.web.board;
 
 import com.hoseok.firstboard.domain.board.Board;
 import com.hoseok.firstboard.domain.board.BoardService;
+import com.hoseok.firstboard.domain.member.Member;
+import com.hoseok.firstboard.web.member.SessionConst;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -49,7 +53,8 @@ public class BoardController {
     }
 
     @PostMapping("/add")
-    public String add(@Validated @ModelAttribute("board") BoardSaveForm form, BindingResult bindingResult) {
+    public String add(@Validated @ModelAttribute("board") BoardSaveForm form, BindingResult bindingResult,
+                        HttpServletRequest request) {
                                                     // BindingResult는 검증해야 할 객체 바로 뒤에 선언해야 함
                                                     // DTO 사용으로 선언 타입과 객체 이름이 바뀌었으므로, @ModelAttribute("board") 처럼 모델 이름 명시
         log.info("add()");
@@ -59,10 +64,17 @@ public class BoardController {
             return "/board/board-form"; // 에러 발생 시 입력 폼으로 이동
         }
 
+        HttpSession session = request.getSession(false);
+        Member loginMember = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
+        // 세션에서 로그인된 멤버 객체 가져오기
+
+        //TODO DTO 전환 및 작성자 이름 고정 로직 서비스로 옮기기
+
         Board board = new Board(); // 서비스 계층 전달 할 도메인 타입 객체 선언
         board.setTitle(form.getTitle());
-        board.setContent(form.getContent());
-        board.setWriter(form.getWriter()); // DTO에서 도메인 객체로 데이터 맵핑(?)
+        board.setContent(form.getContent()); // DTO에서 도메인 객체로 데이터 맵핑(?)
+        board.setWriter(loginMember.getName()); // 가져온 멤버 객체에서 이름만 따기
+
         boardService.create(board);
         log.info("createBoard.id={}", board.getId());
         return "redirect:/board";

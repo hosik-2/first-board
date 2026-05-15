@@ -32,7 +32,7 @@
 
     <div class="mb-3">
       <label>작성자</label>
-      <input type="text" class="form-control" th:field="*{writer}" th:errorclass="is-invalid">
+      <input type="text" class="form-control" th:field="*{writer}" th:errorclass="is-invalid" readonly>
       <div class="invalid-feedback" th:errors="*{writer}">
         작성자 오류
       </div>

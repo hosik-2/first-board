@@ -1,5 +1,6 @@
 package com.hoseok.firstboard.domain.board;
 
+import com.hoseok.firstboard.domain.member.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +12,14 @@ public class BoardServiceImpl implements BoardService { // 현재는 리포지�
     // 서비스 레벨이 필요함 그 기능등도 impl에 선언해야 함.
 
     private final BoardRepository boardRepository;
+    private final MemberRepository memberRepository;
 
     @Autowired // 직접 생성자 선언 정의 / 질문: 근데 이거 왜 하는 거였지? 싱글톤 객체로 만들고 스프링이 쓰려고 만드는 거였나?
                                         // 맞음 직접 new 하고 객체 만들면 나중에 리포지토리 교체시 또 바꿔야 함
                                         // 그래서 추상화를 통해 인터페이스 선언 후 @Primary 등 다른 구현체를 만들고 선택 가능
-    public BoardServiceImpl(BoardRepository boardRepository) {
+    public BoardServiceImpl(BoardRepository boardRepository, MemberRepository memberRepository) {
         this.boardRepository = boardRepository;
+        this.memberRepository = memberRepository;
     }
 
     @Override

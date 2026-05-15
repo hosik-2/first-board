@@ -15,6 +15,5 @@ public class BoardSaveForm {
     @Size(min = 10, max = 5000)
     private String content;
 
-    @NotBlank
-    private String writer;
+    private String writer; // 따로 세션에서 객체 받아서 처리할 거라 글생성 폼에 검증 필요 X
 }
