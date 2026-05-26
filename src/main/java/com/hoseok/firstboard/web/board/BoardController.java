@@ -68,8 +68,6 @@ public class BoardController {
         Member loginMember = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
         // 세션에서 로그인된 멤버 객체 가져오기
 
-        //TODO DTO 전환 및 작성자 이름 고정 로직 서비스로 옮기기
-
         Board board = new Board(); // 서비스 계층 전달 할 도메인 타입 객체 선언
         board.setTitle(form.getTitle());
         board.setContent(form.getContent()); // DTO에서 도메인 객체로 데이터 맵핑(?)
